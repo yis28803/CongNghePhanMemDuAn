@@ -40,10 +40,7 @@ namespace Duanmau.Web.Controllers
             }
 
         }
-        public async Task<IActionResult> Index()
-        {
-            return View();
-        }
+        
 
         public IActionResult IngredientCreate()
         {
@@ -74,30 +71,6 @@ namespace Duanmau.Web.Controllers
             else
             {
                 // Xử lý khi lưu sản phẩm không thành công
-                return View("Error");
-            }
-        }
-
-
-        public async Task<IActionResult> IngredientDetails(int id)
-        {
-            var client = _clientFactory.CreateClient();
-            client.BaseAddress = new Uri("https://localhost:7152/");
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-            HttpResponseMessage response = await client.GetAsync($"api/Ingredient/{id}");
-
-            if (response.IsSuccessStatusCode)
-            {
-                string responseContent = await response.Content.ReadAsStringAsync();
-                Ingredient Ingredients = JsonConvert.DeserializeObject<Ingredient>(responseContent);
-
-                return View("IngredientDetails", Ingredients);
-            }
-            else
-            {
-                // Xử lý trường hợp không thành công
                 return View("Error");
             }
         }

@@ -13,8 +13,6 @@
 </head>
 <body>
     <style>
-        /* EditFoodStyles.css */
-        /* Bố cục và kiểu chung cho form */
         form {
             max-width: 600px;
             margin: 0 auto;
@@ -40,6 +38,11 @@
             margin-bottom: 10px;
             border-radius: 5px;
             border: 1px solid #ccc;
+        }
+
+        h2 {
+            text-align: center; /* Căn giữa nội dung */
+            margin-top: 20px; /* Khoảng cách từ phía trên */
         }
 
         /* Style cho các nút */
@@ -86,11 +89,9 @@
             <input type="text" class="form-control" id="RemainingQuantity" name="RemainingQuantity" value="@Model.RemainingQuantity" required>
         </div>
 
-        <!-- Add other fields as needed -->
-
         <input type="hidden" asp-for="FoodId" />
 
-        <button type="submit" class="btn btn-primary">Save Changes</button>
+        <button type="submit" class="btn btn-primary">Save</button>
         <a asp-controller="Admin" asp-action="FoodAll" class="btn btn-secondary">Back</a>
     </form>
 

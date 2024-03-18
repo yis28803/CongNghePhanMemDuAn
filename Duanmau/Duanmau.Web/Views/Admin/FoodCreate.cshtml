@@ -7,15 +7,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Food</title>
-    <!-- Liên kết tệp CSS -->
     <style>
-        /* CreateFoodStyles.css */
-        /* Style cho các nhãn label */
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Style cho các label */
         label {
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
-            color: #333; /* Màu chữ */
         }
 
         /* Style cho input và select */
@@ -32,18 +38,21 @@
         /* Style cho các nút */
         button[type="submit"] {
             padding: 10px 20px;
-            background-color: #4caf50; /* Màu nền */
-            color: #fff; /* Màu chữ */
+            background-color: #4caf50;
+            color: #fff;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            margin-top: 10px;
         }
 
             button[type="submit"]:hover {
-                background-color: #45a049; /* Màu nền khi di chuột qua */
+                background-color: #45a049;
             }
 
+        h2 {
+            text-align: center; /* Căn giữa nội dung */
+            margin-top: 20px; /* Khoảng cách từ phía trên */
+        }
     </style>
     @* <link rel="stylesheet" href="~/css/CreateFoodStyles.css"> *@
 </head>
@@ -51,31 +60,28 @@
     <h2>Create Food</h2>
     <!-- Form tạo sản phẩm -->
     <form asp-controller="Admin" asp-action="FoodSave" method="post">
-        <div>
-            <label for="foodName">Tên món ăn:</label>
-            <input type="text" id="foodName" name="foodName">
+        <div class="form-group">
+            <label for="foodName">Food Name:</label>
+            <input type="text" class="form-control" id="foodName" name="foodName">
         </div>
-        <div>
-            <label for="price">Giá:</label>
-            <input type="number" id="price" name="price">
+        <div class="form-group">
+            <label for="Price">Price:</label>
+            <input type="number" class="form-control" id="Price" name="Price">
         </div>
-        <div>
-            <label for="status">Trạng thái:</label>
-            <input type="number" id="status" name="status">
+        <div class="form-group">
+            <label for="Status">Status:</label>
+            <input type="number" class="form-control" id="Status" name="Status">
         </div>
-        <div>
-            <label for="mota">Mô tả:</label>
-            <textarea id="mota" name="mota"></textarea>
+        <div class="form-group">
+            <label for="Mota">Description:</label>
+            <textarea class="form-control" id="Mota" name="Mota" rows="3"></textarea>
         </div>
-        <div>
-            <label for="remainingQuantity">Số lượng còn lại:</label>
-            <input type="number" id="remainingQuantity" name="remainingQuantity">
+        <div class="form-group">
+            <label for="RemainingQuantity">Remaining Quantity:</label>
+            <input type="number" class="form-control" id="RemainingQuantity" name="RemainingQuantity">
         </div>
-        <button type="submit" style="background-color: green; color: white;">Lưu sản phẩm</button>
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a asp-controller="Admin" asp-action="FoodAll" class="btn btn-secondary">Back</a>
     </form>
-    
-     <form asp-controller="Admin" asp-action="FoodAll">
-        <button type="submit">Back</button>
-    </form>  
 </body>
 </html>
