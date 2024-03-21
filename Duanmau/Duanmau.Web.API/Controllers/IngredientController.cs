@@ -43,11 +43,21 @@ namespace Duanmau.Web.API.Controllers
         [HttpPost]
         public async Task<ActionResult<Ingredient>> PostIngredient(Ingredient ingredient)
         {
+            // Kiểm tra xem nguyên liệu đã tồn tại chưa
+            var existingIngredient = await _context.Ingredients.FirstOrDefaultAsync(i => i.IngredientName == ingredient.IngredientName);
+            if (existingIngredient != null)
+            {
+                // Trả về mã lỗi 409 Conflict nếu nguyên liệu đã tồn tại
+                return Conflict("Nguyên liệu đã tồn tại");
+            }
+
+            // Nguyên liệu chưa tồn tại, thêm mới
             _context.Ingredients.Add(ingredient);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetIngredient), new { id = ingredient.IngredientId }, ingredient);
         }
+
 
         // PUT: api/Ingredient/5
         [HttpPut("{id}")]
@@ -56,6 +66,14 @@ namespace Duanmau.Web.API.Controllers
             if (id != ingredient.IngredientId)
             {
                 return BadRequest();
+            }
+
+            // Kiểm tra xem nguyên liệu đã tồn tại chưa
+            var existingIngredient = await _context.Ingredients.FirstOrDefaultAsync(i => i.IngredientName == ingredient.IngredientName && i.IngredientId != id);
+            if (existingIngredient != null)
+            {
+                // Trả về mã lỗi 409 Conflict nếu nguyên liệu đã tồn tại
+                return Conflict("Nguyên liệu đã tồn tại");
             }
 
             _context.Entry(ingredient).State = EntityState.Modified;

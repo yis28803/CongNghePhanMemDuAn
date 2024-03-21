@@ -16,24 +16,28 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\BaNghia\CongNghePhanmem\Chonopgit\Duanmau\Duanmau.Web
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/BaNghia/CongNghePhanmem/Chonopgit/Duanmau/Duanmau.Web/Views/Admin/FoodAll.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRm9vZEFsbC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/BaNghia/CongNghePhanmem/Chonopgit/Duanmau/Duanmau.Web/Views/Admin/FoodCreate.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRm9vZENyZWF0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/BaNghia/CongNghePhanmem/Chonopgit/Duanmau/Duanmau.Web/Views/Admin/FoodEdit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRm9vZEVkaXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/BaNghia/CongNghePhanmem/Chonopgit/Duanmau/Duanmau.Web/Views/Admin/index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5caW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/BaNghia/CongNghePhanmem/Chonopgit/Duanmau/Duanmau.Web/Views/Admin/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/BaNghia/CongNghePhanmem/Chonopgit/Duanmau/Duanmau.Web/Views/Admin_Food/FoodAll.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5fRm9vZFxGb29kQWxsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/BaNghia/CongNghePhanmem/Chonopgit/Duanmau/Duanmau.Web/Views/Admin_Food/FoodCreate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5fRm9vZFxGb29kQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/BaNghia/CongNghePhanmem/Chonopgit/Duanmau/Duanmau.Web/Views/Admin_Food/FoodEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5fRm9vZFxGb29kRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/BaNghia/CongNghePhanmem/Chonopgit/Duanmau/Duanmau.Web/Views/Admin_Food/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5fRm9vZFxfVmlld1N0YXJ0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/BaNghia/CongNghePhanmem/Chonopgit/Duanmau/Duanmau.Web/Views/Admin_Ingredient/IngredientAll.cshtml]

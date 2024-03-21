@@ -1,8 +1,11 @@
 ﻿using Duanmau.Web.API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace Duanmau.Web.API.Controllers
+namespace YourNamespace.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -40,6 +43,12 @@ namespace Duanmau.Web.API.Controllers
         [HttpPost]
         public async Task<ActionResult<Food>> PostFood(Food food)
         {
+            var existingFood = await _context.Foods.FirstOrDefaultAsync(f => f.FoodName == food.FoodName);
+            if (existingFood != null)
+            {
+                return Conflict("Món ăn đã tồn tại");
+            }
+
             _context.Foods.Add(food);
             await _context.SaveChangesAsync();
 
@@ -53,6 +62,12 @@ namespace Duanmau.Web.API.Controllers
             if (id != food.FoodId)
             {
                 return BadRequest();
+            }
+
+            var existingFood = await _context.Foods.FirstOrDefaultAsync(f => f.FoodName == food.FoodName && f.FoodId != id);
+            if (existingFood != null)
+            {
+                return Conflict("Món ăn đã tồn tại");
             }
 
             _context.Entry(food).State = EntityState.Modified;

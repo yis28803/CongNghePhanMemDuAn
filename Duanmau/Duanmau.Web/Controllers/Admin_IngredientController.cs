@@ -40,15 +40,20 @@ namespace Duanmau.Web.Controllers
             }
 
         }
-        
-
         public IActionResult IngredientCreate()
         {
             return View("IngredientCreate");
         }
-
         public async Task<IActionResult> IngredientSaveAsync(Ingredient Ingredients)
         {
+            // Kiểm tra xem các trường dữ liệu có giá trị null không
+            if (Ingredients.IngredientName == null)
+            {
+                // Nếu một trong các trường là null, hiển thị thông báo lỗi và không thực hiện yêu cầu
+                ModelState.AddModelError("", "Vui lòng nhập đầy đủ thông tin.");
+                return View("IngredientCreate", Ingredients); // Trả về view với dữ liệu đã nhập
+            }
+            // Nếu các trường dữ liệu không null, tiếp tục gửi yêu cầu tới API để thêm mới
             var client = _clientFactory.CreateClient();
             client.BaseAddress = new Uri("https://localhost:7152/");
             client.DefaultRequestHeaders.Accept.Clear();
@@ -66,15 +71,14 @@ namespace Duanmau.Web.Controllers
             if (response.IsSuccessStatusCode)
             {
                 // Xử lý khi lưu sản phẩm thành công
-                return RedirectToAction("IngredientAll"); 
+                return RedirectToAction("IngredientAll");
             }
             else
             {
                 // Xử lý khi lưu sản phẩm không thành công
-                return View("Error");
+                return View("IngredientCreate");
             }
         }
-
         public async Task<IActionResult> IngredientEdit(int id)
         {
             var client = _clientFactory.CreateClient();
@@ -97,9 +101,17 @@ namespace Duanmau.Web.Controllers
                 return View("Error");
             }
         }
-
         public async Task<IActionResult> IngredientSaveEditedAsync(Ingredient editedIngredient)
         {
+            // Kiểm tra xem các trường dữ liệu có giá trị null không
+            if (editedIngredient.IngredientName == null)
+            {
+                // Nếu một trong các trường là null, hiển thị thông báo lỗi và không thực hiện yêu cầu
+                ModelState.AddModelError("", "Vui lòng nhập đầy đủ thông tin.");
+                return View("IngredientEdit", editedIngredient); // Trả về view với dữ liệu đã nhập
+            }
+
+            // Nếu các trường dữ liệu không null, tiếp tục gửi yêu cầu tới API để chỉnh sửa
             var client = _clientFactory.CreateClient();
             client.BaseAddress = new Uri("https://localhost:7152/");
             client.DefaultRequestHeaders.Accept.Clear();
@@ -125,7 +137,6 @@ namespace Duanmau.Web.Controllers
                 return View("Error");
             }
         }
-
         public async Task<IActionResult> IngredientDeleteAsync(int id)
         {
             var client = _clientFactory.CreateClient();
@@ -147,8 +158,5 @@ namespace Duanmau.Web.Controllers
                 return View("Error");
             }
         }
-
-
-
     }
 }
